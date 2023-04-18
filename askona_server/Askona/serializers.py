@@ -13,6 +13,7 @@ class MattressSerializer(serializers.ModelSerializer):
 class MattressSerializerImage(serializers.ModelSerializer):
     class Meta:
         model = Mattress
+        
         fields = ('photo',)
 
 
