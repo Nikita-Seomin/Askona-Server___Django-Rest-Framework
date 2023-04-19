@@ -1,7 +1,7 @@
 from abc import ABC
 
 from rest_framework import serializers
-from .models import Mattress
+from .models import Mattress, Pillow
 
 
 class MattressSerializer(serializers.ModelSerializer):
@@ -15,5 +15,11 @@ class MattressSerializerImage(serializers.ModelSerializer):
         model = Mattress
         
         fields = ('photo',)
+
+
+class PillowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pillow
+        fields = ('title', 'min_height', 'max_height', 'min_weight', 'max_weight', 'photo')
 
 

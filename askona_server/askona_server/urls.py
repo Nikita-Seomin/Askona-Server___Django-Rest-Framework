@@ -5,6 +5,8 @@ from Askona.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/mattresslist/', MattressAPIList.as_view()),
-    path('upload/<int:pk>/', ImageUploadView.as_view()),
-    path('api/v1/mattresslist/<int:pk>/', MattressAPICRUD.as_view()),
+    path('api/v1/mattresslist/', MattressAPICreate.as_view()),
+    path('api/v1/mattresslist/<int:pk>/', MattressAPIUpdate.as_view()),
+    path('api/v1/pillowlist/', PillowAPIList.as_view()),
+    path('api/v1/pillowlist/<int:pk>/', PillowAPICRUD.as_view()),
 ]
