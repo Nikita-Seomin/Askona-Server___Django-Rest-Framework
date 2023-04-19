@@ -10,13 +10,6 @@ class MattressSerializer(serializers.ModelSerializer):
         fields = ('title', 'min_height', 'max_height', 'min_weight', 'max_weight', 'photo')
 
 
-class MattressSerializerImage(serializers.ModelSerializer):
-    class Meta:
-        model = Mattress
-        
-        fields = ('photo',)
-
-
 class PillowSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pillow

@@ -1,14 +1,8 @@
-from wsgiref.util import FileWrapper
-
-from django.http import HttpResponse
 from rest_framework import generics, viewsets
-from rest_framework.parsers import FileUploadParser
-from rest_framework.response import Response
-from rest_framework.utils import json
-from rest_framework.views import APIView
+
 
 from .models import Mattress, Pillow
-from .serializers import MattressSerializer, MattressSerializerImage, PillowSerializer
+from .serializers import MattressSerializer, PillowSerializer
 
 
 class MattressViewSet(viewsets.ModelViewSet):
