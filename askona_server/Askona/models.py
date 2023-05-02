@@ -2,7 +2,28 @@ from django.db import models
 
 
 def nameFile(instance, filename):
-    return '/'.join(['images', str(instance.name), filename])
+    return '/'.join(['images', str(instance.title), filename])
+
+
+def nameFileUserPhoto(instance, filename):
+    return '/images/'.join(['users/after', str(instance.time_create), str(instance.name), str(instance.surname), filename])
+
+
+def nameFileUserConturPhoto(instance, filename):
+    return '/images/'.join(['users/before', str(instance.time_create), str(instance.name), str(instance.surname), filename])
+
+
+class Users(models.Model):
+    name = models.CharField(max_length=511)
+    surname = models.CharField(max_length=511)
+    second_name = models.CharField(max_length=511, blank=True)
+    time_create = models.DateTimeField(auto_now_add=True)
+    time_update = models.DateTimeField(auto_now=True)
+    userPhoto = models.ImageField(upload_to=nameFileUserPhoto, blank=True)
+    userConturPhoto = models.ImageField(upload_to=nameFileUserConturPhoto, blank=True)
+
+    def __str__(self):
+        return self.surname
 
 
 class Mattress(models.Model):
