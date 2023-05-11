@@ -6,11 +6,11 @@ def nameFile(instance, filename):
 
 
 def nameFileUserPhoto(instance, filename):
-    return '/images/'.join(['users/after', str(instance.time_create), str(instance.name), str(instance.surname), filename])
+    return '/'.join(['users/after', str(instance.name), str(instance.surname), filename])
 
 
 def nameFileUserConturPhoto(instance, filename):
-    return '/images/'.join(['users/before', str(instance.time_create), str(instance.name), str(instance.surname), filename])
+    return '/'.join(['users/before',  str(instance.name), str(instance.surname), filename])
 
 
 class Users(models.Model):
@@ -19,8 +19,9 @@ class Users(models.Model):
     second_name = models.CharField(max_length=511, blank=True)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    userPhoto = models.ImageField(upload_to=nameFileUserPhoto, blank=True)
-    userConturPhoto = models.ImageField(upload_to=nameFileUserConturPhoto, blank=True)
+    height = models.DecimalField(max_digits=5, decimal_places=1, default=0, blank=True)
+    # userPhoto = models.ImageField(upload_to=nameFileUserPhoto, blank=True)
+    # userConturPhoto = models.ImageField(upload_to=nameFileUserConturPhoto, blank=True)
 
     def __str__(self):
         return self.surname

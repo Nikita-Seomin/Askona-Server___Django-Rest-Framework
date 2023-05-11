@@ -9,9 +9,15 @@ from rest_framework import routers
 matressRouter = routers.SimpleRouter()
 matressRouter.register(r'mattress', MattressViewSet)
 
+# usersRouter = routers.SimpleRouter()
+# usersRouter.register(r'users', UserAPIView)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include(matressRouter.urls)),
+
+    path('api/v1/users/', UserAPIView.as_view()),
 
     path('api/v1/mattressPhoto/<int:pk>/', MattressAPICRUD.as_view()),
 

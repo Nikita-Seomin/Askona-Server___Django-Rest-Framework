@@ -1,15 +1,30 @@
+from django.forms import model_to_dict
 from rest_framework import generics, viewsets, serializers
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from .models import Mattress, Pillow
-from .serializers import MattressSerializer, PillowSerializer, MattressPhotoSerializer
+from .models import Mattress, Pillow, Users
+from .photoAnalizer import detect_image
+from .serializers import MattressSerializer, PillowSerializer, MattressPhotoSerializer, UserSerializer
 
 
 # ----------------------users------------------------------------
+class UserAPIView(APIView):
 
+    def get(self, request):
+        users = Users.objects.all().values()
+        return Response({'posts': list(users)})
 
-
-
+    def post(self, request):
+        # serializer = UserSerializer(data=request.data)
+        # serializer.is_valid(raise_exception=True)
+        userHeight = detect_image(request.data['userConturPhoto'])
+        post_new = Users.objects.create(
+            name=request.data['name'],
+            surname=request.data['surname'],
+            height=userHeight
+        )
+        return Response({'posts': model_to_dict(post_new)})
 
 #----------------------------------------------------------------------
 
