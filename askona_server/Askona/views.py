@@ -3,7 +3,7 @@ from rest_framework import generics, viewsets, serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Mattress, Pillow, Users
+from .models import Mattress, Pillow, Users, nameFileUserPhoto
 from .photoAnalizer import detect_image
 from .serializers import MattressSerializer, PillowSerializer, MattressPhotoSerializer, UserSerializer
 
@@ -18,16 +18,17 @@ class UserAPIView(APIView):
     def post(self, request):
         # serializer = UserSerializer(data=request.data)
         # serializer.is_valid(raise_exception=True)
-        # userHeight = detect_image(request.data['userConturPhoto'])
+        #userHeight = detect_image(request.data['userPhoto'])
         post_new = Users.objects.create(
             name=request.data['name'],
             surname=request.data['surname'],
-            height=11
+            height=11,
+            userPhoto=request.data['userPhoto']
         )
-        return Response({'posts': model_to_dict(post_new)})
+        return Response({'posts': UserSerializer(post_new).data, 'photo': detect_image(request.data['userPhoto'], 'images/users/after/name/surname/Andrey_and_garage_BgeXcQV.jpg')})
 
 #----------------------------------------------------------------------
-
+ # detect_image(request.data['userPhoto'], nameFileUserPhoto(UserSerializer(post_new).data, request.data['userPhoto']))
 
 # ----------------------Mattress------------------------------------
 

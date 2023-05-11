@@ -20,8 +20,8 @@ class Users(models.Model):
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
     height = models.DecimalField(max_digits=5, decimal_places=1, default=0, blank=True)
-    # userPhoto = models.ImageField(upload_to=nameFileUserPhoto, blank=True)
-    # userConturPhoto = models.ImageField(upload_to=nameFileUserConturPhoto, blank=True)
+    userPhoto = models.ImageField(upload_to=nameFileUserPhoto, blank=True)
+    userConturPhoto = models.ImageField(upload_to=nameFileUserConturPhoto, blank=True)
 
     def __str__(self):
         return self.surname

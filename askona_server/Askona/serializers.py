@@ -6,7 +6,7 @@ from .models import Mattress, Pillow, Users
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = ('name', 'surname', 'second_name', 'height')
+        fields = ('name', 'surname', 'second_name', 'height', 'userPhoto')
 
     def get_photo_url(self, obj):
         request = self.context.get('request')

@@ -79,9 +79,9 @@ def find_height_human(human_pixel_size, background_pixel_size):
     return human_pixel_size * background_size / background_pixel_size
 
 
-def detect_image(image):
+def detect_image(image, path_image2):
     human_pixel_size = 0
-    dominate_color_hsv = main_color_hsv(path_image)
+    dominate_color_hsv = main_color_hsv(path_image2)
 
     image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
