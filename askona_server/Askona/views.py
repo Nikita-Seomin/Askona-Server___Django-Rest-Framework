@@ -25,7 +25,7 @@ class UserAPIView(APIView):
             height=11,
             userPhoto=request.data['userPhoto']
         )
-        return Response({'posts': UserSerializer(post_new).data, 'photo': detect_image(request.data['userPhoto'], 'images/users/after/name/surname/Andrey_and_garage_BgeXcQV.jpg')})
+        return Response({'posts': UserSerializer(post_new).data, 'photo': detect_image(request.data['userPhoto'], UserSerializer(post_new).data['userPhoto'][1:])})
 
 #----------------------------------------------------------------------
  # detect_image(request.data['userPhoto'], nameFileUserPhoto(UserSerializer(post_new).data, request.data['userPhoto']))
