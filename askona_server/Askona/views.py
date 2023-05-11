@@ -18,11 +18,11 @@ class UserAPIView(APIView):
     def post(self, request):
         # serializer = UserSerializer(data=request.data)
         # serializer.is_valid(raise_exception=True)
-        userHeight = detect_image(request.data['userConturPhoto'])
+        # userHeight = detect_image(request.data['userConturPhoto'])
         post_new = Users.objects.create(
             name=request.data['name'],
             surname=request.data['surname'],
-            height=userHeight
+            height=11
         )
         return Response({'posts': model_to_dict(post_new)})
 
